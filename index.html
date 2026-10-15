@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spendly - Personal Finance Tracker</title>
+    <meta name="description" content="Track your income, expenses and personal finances with Spendly.">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="brand">
+            <h1>Spendly</h1>
+            <p>Personal Finance Tracker</p>
+        </div>
+
+        <button id="addTransactionBtn" type="button">
+            + Add Transaction
+        </button>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="summary" aria-label="Financial summary">
+
+        <div class="summary-card">
+            <p>Total Balance</p>
+            <h2 id="balance">₹0.00</h2>
+        </div>
+
+        <div class="summary-card">
+            <p>Total Income</p>
+            <h2 id="income">₹0.00</h2>
+        </div>
+
+        <div class="summary-card">
+            <p>Total Expenses</p>
+            <h2 id="expenses">₹0.00</h2>
+        </div>
+
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Monthly Expense Insights -->
+        <section class="monthly-insights" aria-labelledby="insightsTitle">
+            <div class="insights-header">
+                <div>
+                    <h2 id="insightsTitle">Monthly Expense Insights</h2>
+                    <p>Understand where your money goes.</p>
+                </div>
+
+                <label for="insightsMonth">
+                    <span>Select month</span>
+                    <input type="month" id="insightsMonth">
+                </label>
+            </div>
+
+            <div class="insights-total">
+                <span>Total expenses this month</span>
+                <h3 id="monthlyExpenseTotal">₹0.00</h3>
+                <p id="monthlyTransactionCount">0 expense transactions</p>
+            </div>
+
+            <div class="insights-grid">
+                <section class="chart-panel">
+                    <h3>Spending by Category</h3>
+                    <p class="panel-description">Compare how much you spent in each category.</p>
+                    <div id="categoryChart" class="category-chart"></div>
+                </section>
+
+                <section class="tree-panel">
+                    <h3>Expense Tree</h3>
+                    <p class="panel-description">Expand a category to see its transactions.</p>
+                    <div id="expenseTree" class="expense-tree"></div>
+                </section>
+            </div>
+        </section>
+
+
+        <!-- Recent Transactions -->
+        <section class="transactions" aria-labelledby="transactionsTitle">
+
+            <div class="transactions-header">
+                <h2 id="transactionsTitle">Recent Transactions</h2>
+
+                <div class="search-box">
+                    <button type="button" id="datePickerBtn" class="date-picker-btn" title="Filter by date" aria-label="Choose date">▦</button>
+
+                    <input
+                         type="text"
+                         id="searchInput"
+                         placeholder="Search transactions..."
+                    >
+
+                    <input
+                         type="date"
+                         id="dateFilter"
+                         aria-label="Filter transactions by date"
+                         class="hidden-date-input"
+                    >
+                </div>
+        
+            </div>
+
+            <div id="transactionList">
+                <div class="empty-state">
+                    <p>No transactions yet.</p>
+                    <span>Add your first transaction to get started.</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Add Transaction Form -->
+        <section
+            class="transaction-form"
+            id="transactionFormSection"
+            aria-labelledby="formTitle"
+        >
+
+            <h2 id="formTitle">Add Transaction</h2>
+
+            <form id="expenseForm">
+
+                <label for="description">Description</label>
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="e.g. Grocery shopping"
+                    maxlength="100"
+                    required
+                >
+
+                <label for="amount">Amount (₹)</label>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter amount"
+                    min="0.01"
+                    step="0.01"
+                    required
+                >
+
+                <label for="type">Type</label>
+                <select id="type" required>
+                    <option value="">Select type</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <label for="category">Category</label>
+                <select id="category" required>
+                    <option value="">Select category</option>
+                    <option value="food">Food</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="transport">Transport</option>
+                    <option value="bills">Bills</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="salary">Salary</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <button type="submit">Add Transaction</button>
+
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>

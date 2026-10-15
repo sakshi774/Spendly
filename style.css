@@ -1,0 +1,914 @@
+
+/* =========================
+   Spendly - Global Styles
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+/* =========================
+   Header
+========================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.brand h1 {
+    color: #4f46e5;
+    font-size: 34px;
+    margin-bottom: 6px;
+}
+
+.brand p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+#addTransactionBtn {
+    flex-shrink: 0;
+    background: #4f46e5;
+    color: #ffffff;
+    padding: 13px 20px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+#addTransactionBtn:hover {
+    background: #4338ca;
+}
+
+/* =========================
+   Summary Cards
+========================= */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    min-width: 0;
+}
+
+.summary-card p {
+    color: #64748b;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.summary-card h2 {
+    font-size: clamp(20px, 2vw, 28px);
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   Main Layout - Desktop
+   Form left, transactions right
+========================= */
+
+.main-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    grid-template-areas: "form transactions";
+    align-items: start;
+    gap: 24px;
+}
+
+.transaction-form {
+    grid-area: form;
+}
+
+.transactions {
+    grid-area: transactions;
+}
+
+.transaction-form,
+.transactions {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    min-width: 0;
+    width: 100%;
+}
+
+.transaction-form h2,
+.transactions h2 {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Transaction Form
+========================= */
+
+#expenseForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#expenseForm label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+#expenseForm input,
+#expenseForm select,
+#searchInput {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+#expenseForm input:focus,
+#expenseForm select:focus,
+#searchInput:focus {
+    outline: 2px solid #c7d2fe;
+    border-color: #4f46e5;
+}
+
+#expenseForm button {
+    background: #4f46e5;
+    color: #ffffff;
+    padding: 13px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+#expenseForm button:hover {
+    background: #4338ca;
+}
+
+/* =========================
+   Recent Transactions
+========================= */
+
+.transactions-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 18px;
+}
+
+.transactions-header h2 {
+    margin-bottom: 6px;
+}
+
+#searchInput {
+    margin-bottom: 2px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 35px 10px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.empty-state span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* =========================
+   Individual Transaction
+========================= */
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.transaction-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.transaction-details strong {
+    overflow-wrap: anywhere;
+}
+
+.transaction-details span {
+    color: #64748b;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.transaction-details small {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.transaction-item > strong {
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+.transaction-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.transaction-actions button {
+    padding: 9px 11px;
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.transaction-actions .edit-btn {
+    background: #4f46e5;
+}
+
+.transaction-actions .edit-btn:hover {
+    background: #4338ca;
+}
+
+.transaction-actions .delete-btn {
+    background: #dc2626;
+}
+
+.transaction-actions .delete-btn:hover {
+    background: #b91c1c;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 900px) {
+    body {
+        padding: 22px;
+    }
+
+    .main-content {
+        gap: 18px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+
+    .transaction-form,
+    .transactions {
+        padding: 20px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .transaction-item > strong {
+        text-align: right;
+    }
+
+    .transaction-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+}
+
+/* =========================
+   Mobile
+   Summary -> Transactions -> Form
+========================= */
+
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .brand h1 {
+        font-size: 30px;
+    }
+
+    #addTransactionBtn {
+        width: 100%;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 22px;
+    }
+
+    .summary-card {
+        padding: 20px;
+    }
+
+    .summary-card h2 {
+        font-size: 25px;
+    }
+
+    .main-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "transactions"
+            "form";
+        gap: 20px;
+    }
+
+    .transactions,
+    .transaction-form {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .transaction-form h2,
+    .transactions h2 {
+        font-size: 20px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+
+    .transaction-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 380px) {
+    body {
+        padding: 12px;
+    }
+
+    .summary-card,
+    .transaction-form,
+    .transactions {
+        padding: 16px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .transaction-item > strong {
+        text-align: left;
+    }
+
+    .transaction-actions {
+        grid-column: auto;
+        justify-content: flex-start;
+    }
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.search-box #searchInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px 12px 48px;
+}
+
+.date-picker-btn {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    color: #555;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hidden-date-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* =========================
+   Monthly Expense Insights
+========================= */
+
+.monthly-insights {
+    background: #ffffff;
+    padding: 26px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.insights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.insights-header h2 {
+    font-size: 22px;
+    margin-bottom: 7px;
+}
+
+.insights-header p,
+.panel-description {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.insights-header label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+#insightsMonth {
+    padding: 10px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    color: #1e293b;
+    background: #ffffff;
+}
+
+.insights-total {
+    background: #eef2ff;
+    padding: 22px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.insights-total span {
+    color: #4338ca;
+    font-size: 14px;
+}
+
+.insights-total h3 {
+    color: #3730a3;
+    font-size: clamp(25px, 4vw, 34px);
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+.insights-total p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.chart-panel,
+.tree-panel {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 0;
+}
+
+.chart-panel h3,
+.tree-panel h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.panel-description {
+    margin-bottom: 20px;
+}
+
+.category-row {
+    margin-bottom: 20px;
+}
+
+.category-row:last-child {
+    margin-bottom: 0;
+}
+
+.category-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.category-row-header strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.category-track {
+    height: 10px;
+    background: #e9edf5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.category-bar {
+    height: 100%;
+    background: #6366f1;
+    border-radius: 20px;
+    transition: width 0.25s ease;
+}
+
+.category-percentage {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.tree-category {
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.tree-category summary {
+    padding: 13px;
+    cursor: pointer;
+    background: #f8fafc;
+    font-size: 13px;
+    font-weight: 600;
+    list-style-position: inside;
+}
+
+.tree-category summary:hover {
+    background: #eef2ff;
+}
+
+.tree-category summary strong {
+    display: block;
+    margin: 7px 0 0 20px;
+    color: #4338ca;
+}
+
+.tree-transactions {
+    padding: 4px 13px 10px 25px;
+}
+
+.tree-transaction {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 13px;
+}
+
+.tree-transaction:last-child {
+    border-bottom: none;
+}
+
+.tree-transaction div {
+    min-width: 0;
+}
+
+.tree-transaction strong {
+    overflow-wrap: anywhere;
+}
+
+.tree-transaction small {
+    display: block;
+    margin-top: 5px;
+    color: #64748b;
+}
+
+.tree-transaction > span {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.insights-empty {
+    color: #64748b;
+    text-align: center;
+    padding: 22px 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .monthly-insights {
+        padding: 20px;
+        margin-bottom: 22px;
+    }
+
+    .insights-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .insights-header label {
+        max-width: 100%;
+    }
+
+    #insightsMonth {
+        width: 100%;
+    }
+
+    .insights-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .chart-panel,
+    .tree-panel {
+        padding: 16px;
+    }
+}
+
+
+
+
+/* =================================
+   Spendly - Final Responsive Layout
+================================= */
+
+/* Give the dashboard the full available width */
+.monthly-insights {
+    width: 100%;
+    margin: 0 0 30px;
+    padding: 30px;
+}
+
+/* Desktop: chart and tree side by side inside full-width dashboard */
+.insights-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.chart-panel,
+.tree-panel {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+}
+
+/* Improve the monthly summary area */
+.insights-total {
+    padding: 26px;
+}
+
+.insights-total h3 {
+    font-size: clamp(28px, 3vw, 38px);
+}
+
+/* Main sections: comfortable desktop spacing */
+.main-content {
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.5fr);
+    gap: 24px;
+}
+
+.transaction-form,
+.transactions {
+    padding: 26px;
+}
+
+/* Prevent long descriptions from breaking transaction rows */
+.transaction-item {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 12px;
+}
+
+.transaction-details {
+    overflow-wrap: anywhere;
+}
+
+/* Tablet layout */
+@media (max-width: 900px) {
+    body {
+        padding: 22px;
+    }
+
+    .main-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 18px;
+    }
+
+    .monthly-insights {
+        padding: 22px;
+    }
+
+    .chart-panel,
+    .tree-panel {
+        padding: 18px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .transaction-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
+    .monthly-insights {
+        padding: 18px;
+        margin-bottom: 22px;
+    }
+
+    .insights-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .insights-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .chart-panel,
+    .tree-panel {
+        padding: 16px;
+    }
+
+    .main-content {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "transactions"
+            "form";
+        gap: 20px;
+    }
+
+    .transaction-form,
+    .transactions {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .transaction-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 380px) {
+    body {
+        padding: 12px;
+    }
+
+    .monthly-insights,
+    .transaction-form,
+    .transactions {
+        padding: 15px;
+    }
+
+    .transaction-item {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .transaction-item > strong {
+        text-align: left;
+    }
+
+    .transaction-actions {
+        grid-column: auto;
+        justify-content: flex-start;
+    }
+}
+
+
+/* ===== Spendly Desktop Layout Fix ===== */
+
+.monthly-insights {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 30px 0;
+    padding: 30px;
+    grid-column: 1 / -1;
+}
+
+/* Keep chart and tree balanced */
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.chart-panel,
+.tree-panel {
+    min-width: 0;
+    width: 100%;
+}
+
+/* Main transaction section */
+.main-content {
+    width: 100%;
+}
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
+    .monthly-insights {
+        padding: 18px;
+        margin: 22px 0;
+    }
+
+    .insights-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+}
